@@ -32,6 +32,6 @@ public class MovePiece : MonoBehaviour
         parentSetting = parentTransform.gameObject.GetComponent<Setting>();
         parentSetting.isPath = false;
 
-        gameManager.RemovePath();
+        gameManager.RemovePath(this.transform);
     }
 }

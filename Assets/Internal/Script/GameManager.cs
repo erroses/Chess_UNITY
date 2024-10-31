@@ -19,14 +19,16 @@ public class GameManager : MonoBehaviour
         Setting();
     }
 
-    public void RemovePath()
+    public void RemovePath(Transform parent)
     {
-        foreach (GameObject obj in GameObject.FindObjectsOfType<GameObject>())
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Path"))
         {
-            if (obj.CompareTag("Path"))
+            if (obj.transform.parent != parent) //존나 뭐지
             {
-                Destroy(obj);
+                obj.transform.parent.GetComponent<Setting>().isPath = false;
             }
+
+            Destroy(obj);
         }
     }
 

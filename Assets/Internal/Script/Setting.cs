@@ -1,32 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Setting : MonoBehaviour
+public class Setting : PieceSetting
 {
-    private GameManager gameManager;
-    public GameObject prefab;
+    private float initPositionY;
 
-    public bool isPath = false;
-    void Start()
+    protected override void Start() // 'void' 키워드가 빠지지 않도록 주의
     {
-        gameManager = FindObjectOfType<GameManager>();
-        this.transform.localScale = new Vector2(0.4f, 0.4f);
+        base.Start(); // 부모 클래스의 Start 메서드를 호출
+        initPositionY = this.transform.position.y; // 변수를 초기화
     }
 
-    // 이미지 클릭 시 호출되는 메서드
-    private void OnMouseDown()
+    // 클릭 시 호출되는 메서드
+    protected override void isPathOption()
     {
-        // Path 프리팹 제거
-        gameManager.RemovePath();
-        
-        if(!isPath)
-        {
-            Vector3 newPosition = transform.position + new Vector3(0, gameManager.CellSize, 0);
-            Instantiate(prefab, newPosition, Quaternion.identity, this.transform);
-        }
+        base.isPathOption();
 
-        isPath = !isPath;
+        if (!isPath)
+        {
+            if(transform.position.y == initPositionY)
+            {
+                Instantiate(Path, transform.position + new Vector3(0, 2 * gameManager.CellSize, 0), Quaternion.identity, spawnTransform);
+            }
+        }
     }
 }
