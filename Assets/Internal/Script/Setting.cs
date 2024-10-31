@@ -6,9 +6,12 @@ using UnityEngine;
 public class Setting : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
+    public GameObject prefab;
 
     private float ChessBoardSize; // 체스판 크기
-    private float CellSize; // 한 칸 크기
+    public float CellSize; // 한 칸 크기
+
+    private bool isPath = false;
 
 
     void Start()
@@ -21,5 +24,26 @@ public class Setting : MonoBehaviour
 
         // 폰의 경우
         this.transform.Translate(0, -3 * CellSize, 0);
+    }
+
+    // 이미지 클릭 시 호출되는 메서드
+    private void OnMouseDown()
+    {
+        // Path 프리팹 제거
+        foreach (GameObject obj in GameObject.FindObjectsOfType<GameObject>())
+        {
+            if (obj.CompareTag("Path"))
+            {
+                Destroy(obj);
+            }
+        }
+        
+        if(!isPath)
+        {
+            Vector3 newPosition = transform.position + new Vector3(0, CellSize, 0);
+            Instantiate(prefab, newPosition, Quaternion.identity);
+        }
+
+        isPath = !isPath;
     }
 }
