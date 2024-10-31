@@ -23,9 +23,9 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Path"))
         {
-            if (obj.transform.parent != parent) //존나 뭐지
+            if (obj.transform.parent != parent)
             {
-                obj.transform.parent.GetComponent<Setting>().isPath = false;
+                obj.transform.parent.GetComponent<PieceSetting>().isPath = false;
             }
 
             Destroy(obj);
@@ -34,9 +34,9 @@ public class GameManager : MonoBehaviour
 
     private void Setting()
     {
-        Vector3 newPosition = new Vector3(7 * CellSize / 2, -7 * CellSize / 2, 0) ;
+        Vector3 newPosition = new Vector3(7 * CellSize / 2, -7 * CellSize / 2, 0) ; // 우측 하단 끝
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 8; i++) { //폰
             Instantiate(Pieces[0], newPosition + new Vector3(-i * CellSize, CellSize, 0), Quaternion.identity);
         }
     }

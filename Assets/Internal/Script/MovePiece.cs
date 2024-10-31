@@ -6,7 +6,7 @@ using UnityEngine;
 public class MovePiece : MonoBehaviour
 {
     private GameManager gameManager;
-    private Setting parentSetting;
+    private PieceSetting parentSetting;
 
     public GameObject prefab;
     private Transform parentTransform;
@@ -29,7 +29,7 @@ public class MovePiece : MonoBehaviour
     private void OnMouseDown()
     {
         parentTransform.position = this.transform.position;
-        parentSetting = parentTransform.gameObject.GetComponent<Setting>();
+        parentSetting = parentTransform.gameObject.GetComponent<PieceSetting>();
         parentSetting.isPath = false;
 
         gameManager.RemovePath(this.transform);

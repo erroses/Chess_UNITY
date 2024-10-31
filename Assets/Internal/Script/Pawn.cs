@@ -4,7 +4,7 @@ using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Setting : PieceSetting
+public class Pawn : PieceSetting
 {
     private float initPositionY;
 
