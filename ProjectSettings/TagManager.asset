@@ -8,6 +8,8 @@ TagManager:
   - Movable
   - Range
   - Trail
+  - White
+  - Black
   layers:
   - Default
   - TransparentFX

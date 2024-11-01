@@ -5,13 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    public GameObject[] Pieces = new GameObject[6];
+    public GameObject[] whitePieces = new GameObject[6];
+    public GameObject[] blackPieces = new GameObject[6];
 
     private float ChessBoardSize; // 체스판 크기
     public float CellSize; // 한 칸 크기
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         ChessBoardSize = spriteRenderer.bounds.size.x;
         CellSize = ChessBoardSize / 8;
@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour
         Vector3 newPosition = new Vector3(7 * CellSize / 2, -7 * CellSize / 2, 0) ; // 우측 하단 끝
 
         for (int i = 0; i < 8; i++) { //폰
-            Instantiate(Pieces[0], newPosition + new Vector3(-i * CellSize, CellSize, 0), Quaternion.identity);
+            Instantiate(whitePieces[0], newPosition + new Vector3(-i * CellSize, CellSize, 0), Quaternion.identity);
+            Instantiate(blackPieces[0], newPosition + new Vector3(-i * CellSize, 6 * CellSize, 0), Quaternion.identity);
         }
     }
 }

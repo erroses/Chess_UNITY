@@ -328,8 +328,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1890517900}
-  Pieces:
+  whitePieces:
   - {fileID: 6921635321415476572, guid: 1a911254528165d4ba8b2c2328f66ca7, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  blackPieces:
+  - {fileID: 5799606399263877594, guid: da1c316b16137a248af128e112915b67, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

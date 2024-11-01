@@ -2,19 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 이 추상 클래스는 게임 매니저에 통합시켜야하나
 public abstract class PieceSetting : MonoBehaviour
 {
     protected GameManager gameManager;
     public GameObject checkRange;
     public GameObject Path;
+    public GameObject attackMark;
     protected Transform spawnTransform;
 
+    protected Dictionary<int, string> attackable;
+
     public bool isPath = false;
+    public int isWhite;
 
     protected virtual void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         spawnTransform = this.transform;
+
+        // 공격 가능한 기물
+        attackable = new Dictionary<int ,string>()
+        {
+            { -1, "White" },
+            { 1, "Black" },
+        };
 
         if (this.tag != "Range")
         {
@@ -25,6 +37,8 @@ public abstract class PieceSetting : MonoBehaviour
         {
             spawnTransform = spawnTransform.parent;
         }
+
+        isWhite = spawnTransform.tag == "White" ? 1 : -1;
     }
 
     protected void OnMouseDown()
@@ -40,9 +54,5 @@ public abstract class PieceSetting : MonoBehaviour
         isPath = !isPath;
     }
 
-    protected virtual void isPathOption()
-    {
-        Vector3 newPosition = spawnTransform.position + new Vector3(0, gameManager.CellSize, 0);
-        Instantiate(Path, newPosition, Quaternion.identity, spawnTransform);
-    }
+    protected abstract void isPathOption();
 }
