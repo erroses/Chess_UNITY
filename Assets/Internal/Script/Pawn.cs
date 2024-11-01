@@ -8,7 +8,7 @@ public class Pawn : PieceSetting
 {
     private float initPositionY;
 
-    protected override void Start() // 'void' 키워드가 빠지지 않도록 주의
+    protected override void Start()
     {
         base.Start(); // 부모 클래스의 Start 메서드를 호출
         initPositionY = this.transform.position.y; // 변수를 초기화

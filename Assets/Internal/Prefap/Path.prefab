@@ -126,7 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68f9d304e63516469d35945c92338bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5191631333201491510, guid: b6f1fa1ba8b684e47b90d9f034240f42, type: 3}
+  checkRange: {fileID: 5191631333201491510, guid: b6f1fa1ba8b684e47b90d9f034240f42, type: 3}
+  trail: {fileID: 491720996294315760, guid: ed287c7674e231a4d845392ce6e0eb21, type: 3}
 --- !u!61 &7591670888938749893
 BoxCollider2D:
   m_ObjectHideFlags: 0

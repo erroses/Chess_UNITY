@@ -32,6 +32,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RemoveTrail()
+    {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Trail"))
+        {
+            Destroy(obj);
+        }
+    }
+
     private void Setting()
     {
         Vector3 newPosition = new Vector3(7 * CellSize / 2, -7 * CellSize / 2, 0) ; // 우측 하단 끝
