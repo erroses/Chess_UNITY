@@ -10,6 +10,7 @@ TagManager:
   - Trail
   - White
   - Black
+  - Attack
   layers:
   - Default
   - TransparentFX

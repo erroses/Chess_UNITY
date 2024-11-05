@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 // 이 추상 클래스는 게임 매니저에 통합시켜야하나
@@ -9,6 +10,7 @@ public abstract class PieceSetting : MonoBehaviour
     public GameObject checkRange;
     public GameObject Path;
     public GameObject attackMark;
+    public GameObject moveRange;
     protected Transform spawnTransform;
 
     protected Dictionary<int, string> attackable;
@@ -51,7 +53,7 @@ public abstract class PieceSetting : MonoBehaviour
             isPathOption();
         }
 
-        isPath = !isPath;
+        spawnTransform.GetComponent<PieceSetting>().isPath = !spawnTransform.GetComponent<PieceSetting>().isPath;
     }
 
     protected abstract void isPathOption();

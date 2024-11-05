@@ -30,7 +30,7 @@ public class MovePiece : MonoBehaviour
     private void OnMouseDown()
     {
         // 흔적 지우기
-        gameManager.RemoveTrail();
+        gameManager.RemoveTag("Trail");
 
         // 움직인 흔적
         Instantiate(trail, parentTransform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity, parentTransform);

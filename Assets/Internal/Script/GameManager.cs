@@ -32,9 +32,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void RemoveTrail()
+    public void RemoveTag(string tag)
     {
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Trail"))
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag(tag))
         {
             Destroy(obj);
         }

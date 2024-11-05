@@ -6,10 +6,6 @@ using UnityEngine;
 
 public class Pawn : PieceSetting
 {
-    // 문제 1. 폰이 뒤로가게 되는 문제
-    // 문제 2. 껐다 켰다가 바로 실행이 안됨
-
-
     private float initPositionY;
 
     protected override void Start()
@@ -46,6 +42,8 @@ public class Pawn : PieceSetting
 
     private void Attack()
     {
+        gameManager.RemoveTag("Attack");
+
         for (int i = -1; i <= 1; i+=2)
         {
             Vector3 newPosition = spawnTransform.position + new Vector3(i * gameManager.CellSize, gameManager.CellSize * isWhite, 0);
@@ -53,7 +51,8 @@ public class Pawn : PieceSetting
 
             if(collider != null && (collider.tag == attackable[isWhite] || collider.transform.parent.tag == attackable[isWhite]))
             {
-                Instantiate(attackMark, newPosition, Quaternion.identity, spawnTransform);
+                Instantiate(attackMark, newPosition + new Vector3(-0.5f, 0.5f, 0), Quaternion.identity, spawnTransform);
+                //Instantiate(moveRange, newPosition, Quaternion.identity, spawnTransform);
             }
         }
     }
